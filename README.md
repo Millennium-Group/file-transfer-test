@@ -29,6 +29,24 @@ This Python module facilitates secure file transfer between a client and a serve
   - Implements robust error handling for potential networking issues, file-related problems, and security concerns.
   - Uses exceptions appropriately to handle errors and edge cases.
 
+## Challenges Faced
+
+- **Key Length Mismatch:** One challenge faced was ensuring that the ciphertext length matched the key size during encryption and decryption. This required careful consideration of padding schemes and key generation.
+
+- **Network Communication:** Ensuring seamless communication between the client and server, handling timeouts, and addressing potential network issues posed challenges during development.
+
+## Potential Areas for Improvement
+
+- **Logging:** Introduce a comprehensive logging mechanism to capture detailed information about the execution, errors, and key events.
+
+- **Testing:** Enhance the testing suite to cover various scenarios, including edge cases and performance testing for large files.
+
+- **User Interface:** Develop a simple user interface for better interaction, feedback, and visualization of the file transfer process.
+
+- **Security Auditing:** Conduct thorough security audits and consider third-party security assessments to identify and address potential vulnerabilities.
+
+- **Optimizations:** Explore opportunities for performance optimizations, such as implementing a more efficient file encryption algorithm or utilizing multithreading for improved parallelism.
+
 ## Usage
 
 ### Server
