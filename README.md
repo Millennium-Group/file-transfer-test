@@ -4,7 +4,7 @@ An MS Visual Studio 2022 Windows client-server console C++ solution, based on Bo
 The client/server file transfer connection is performed via TCP sockets, using SSL encryption.  
 
 To test the solution:  
-You can do that from inside the "bin" subfolder, which contains the executables and some folders that contain JPG files for the test transfer.  
+You can do that from inside the "bin" subfolder, which contains the executables and source folders that contain JPEG files for the test transfer.  
 The "bin" folder also contains the OpenSLL dlls and ONLY the server certificate files. The client SSL certificate is loaded from memory and is not kept as a file at the client side.   
 
 1. The server can be started by start_server.bat. It will look for source files into the specified source folders as parameters (check bat file for details).   
@@ -17,9 +17,10 @@ Each client can choose to "Invalidate" the cached file(s) on the server's side.
 2. Client(s) can be started via the start_client1 and start_client2 bat files.  
 By default the client tries to connect to localhost on port 1234 which could be specified as a parameter (check bat file for details).   
 Clients can be started on remote machines to connect to the server rempotely by supplying the server IP address as the first parameter (blank by default meaning localhost).
-
-Each client will create its folder (Client1 and Client2) to store the received files.  
-More clients could be easilly started by creating a start_client3.bat with Client3 folder for instance.  
+You only need to copy the Client.exe and the OpenSSL dlls to a remote machine for testing. The start_client bat file can also be taken to the remote machine for convenience as well.  
+  
+Each client will create its folder (ClientSroe by default or Client1 and Client2 according to bat file parameters) to store the received files.  
+More clients could be easilly started by creating a start_client3.bat with Client3 folder for instance, etc..  
   
 Each client will start making the following request cycle in a continuous loop (until stopped with Esc keypress):  
 Get 1.jpg  
