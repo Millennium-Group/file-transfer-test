@@ -10,18 +10,18 @@ The client SSL certificate is loaded from memory and is not kept as a file at th
 
 1. The server can be started by start_server.bat. It will look for source files into the specified source folders as parameters (check bat file for details).   
 By default the server starts listening on port 1234 which could be specified as a parameter too (check bat file for details).   
-It will create a Cache folder as specified in bat file, as well.   
+It will create a Cache folder as specified in the bat file, as well.   
 As an example there are 4 Source folders: Source, Source1, Source2, Source3 with corresponding jpeg test files into each one of them.  
 The server caches the files to be sent in the Cache subfolder prior to sending them to the client(s).  
 Each client can choose to "Invalidate" the cached file(s) on the server's side.  
   
 2. Client(s) can be started via the start_client1 and start_client2 bat files.  
 By default the client tries to connect to localhost on port 1234 which could be specified as a parameter (check bat file for details).   
-Clients can be started on remote machines to connect to the server rempotely by supplying the server IP address as the first parameter (blank by default meaning localhost).
+Clients can be started on remote machines to connect to the server remotely by supplying the server IP address as the first parameter (blank by default meaning localhost).
 You only need to copy the Client.exe and the OpenSSL dlls to a remote machine for testing. The start_client bat file can also be taken to the remote machine for convenience as well.  
   
-Each client will create its folder (ClientSroe by default or Client1 and Client2 according to bat file parameters) to store the received files.  
-More clients could be easilly started by creating a start_client3.bat with Client3 folder for instance, etc..  
+Each client will create its folder (ClientStore by default or Client1 and Client2 according to bat file parameters) to store the received files.  
+More clients could be easily started by creating a start_client3.bat with Client3 folder for instance, etc..  
   
 Each client will start making the following request cycle in a continuous loop (until stopped with Esc keypress):  
 Get 1.jpg  
@@ -35,7 +35,7 @@ Invalidate All
   
 The server will try to locate (into Source folders) and copy the requested file if it is not found into its Cache folder prior to sending it (or just its info) to the corresponding client.  
   
-The solution allows for two or more clients to receive the same file simultanously, while Invalidate requests are done only when no files are being processed (get/info). Invalidate requests wait for any Get/Get Info requests to be completed first.   
+The solution allows for two or more clients to receive the same file simultaneously, while Invalidate requests are done only when no files are being processed (get/info). Invalidate requests wait for any Get/Get Info requests to be completed first.   
 "Invalidate" means to ask the server to remove the file(s) from its Cache folder and get them from the source folders anew.   
   
 You'll be able to observe how the files are constantly being copied and erased into the Cache folder and overwritten into each client's folder.  
@@ -44,16 +44,17 @@ Do not run more than one instance from each bat file because it will overwrite t
   
   
 IMPORTANT:  
-If you don't have Visual Studio 2022 installed, you might need to install Visual Studio 2022 C++ X86 [https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022] redistributable in order to test the executables directly from "bin" folder.   
+If you don't have Visual Studio 2022 installed, you might need to install Visual Studio 2022 C++ X86 [https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022] redistributable in order to test the executables directly from the "bin" folder.   
 NOTE: You need to install only the X86 (32 bit) version of the Visual Studio 2022 C++ redist library.  
   
 To build the solution (refer to the Folder_struct.png):  
 1. boost_1_83_0 (latest) [https://www.boost.org/users/download/] needs to be installed into the solution folder. Download the windows archive and unzip the root boost folder into the solution folder. Rename the unzipped boost folder (currently boost_1_83_0) to "boost_latest". Run bootstrap.bat first and then b2.exe after that.  
 2. OpenSSL for Windows (32 bit version) also needs to be installed. The installer can be obtained from here: Win32 OpenSSL v3.2.0 (exe) [https://slproweb.com/products/Win32OpenSSL.html]. Install OpenSSL_Win32 inside the solution folder.    
   
-The solution provides only 32 bit versions of client/server apps. 64 bit versions could be easilly added too if needed.   
+The solution provides only 32 bit versions of client/server apps. 64 bit versions could be easily added too if needed.   
   
 Further improvements could be made as follows:  
 - In the Client project, replace all blocking socket read and write operations by their async_ counterparts. The challenge that we'll face here is to provide a different (circular) buffer when using async_read_until from the socket, because this method doesn't stop on the first encountered delimiter, but also keeps some trailing bytes which need to be reused on the next read.   
-- Better error and excpetion handling in both Server and Client projects.   
+- Better error and exception handling in both Server and Client projects.   
+  
   
