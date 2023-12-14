@@ -52,3 +52,7 @@ To build the solution (refer to the Folder_struct.png):
   
 The solution provides only 32 bit versions of client/server apps. 64 bit versions could be easilly added too if needed.   
   
+Further improvements could be made as follows:  
+- In the Client project, replace all blocking socket read and write operations by their async_ counterparts. The challenge that we'll face here is to provide a different (circular) buffer when using async_read_until from the socket, because this method doesn't stop on the first encountered delimiter, but also keeps some trailing bytes which need to be reused on the next read.   
+- Better error and excpetion handling in both Server and Client projects.   
+  
