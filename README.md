@@ -5,7 +5,8 @@ The client/server file transfer connection is performed via TCP sockets, using S
 
 To test the solution:  
 You can do that from inside the "bin" subfolder, which contains the executables and source folders that contain JPEG files for the test transfer.  
-The "bin" folder also contains the OpenSLL dlls and ONLY the server certificate files. The client SSL certificate is loaded from memory and is not kept as a file at the client side.   
+The "bin" folder also contains the OpenSLL dlls and ONLY the server certificate files. These are the Boost.Asio demo SSL certificates available in the Boost repository.  
+The client SSL certificate is loaded from memory and is not kept as a file at the client side.   
 
 1. The server can be started by start_server.bat. It will look for source files into the specified source folders as parameters (check bat file for details).   
 By default the server starts listening on port 1234 which could be specified as a parameter too (check bat file for details).   
